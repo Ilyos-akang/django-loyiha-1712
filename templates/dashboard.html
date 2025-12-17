@@ -1,0 +1,349 @@
+{% extends "base.html" %}
+
+{% block body %}
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-white overflow-hidden h-screen flex selection:bg-primary selection:text-background-dark">
+    <!-- Sidebar -->
+    <aside class="hidden md:flex flex-col w-72 bg-[#152211] border-r border-[#2c4823]/50 h-full flex-shrink-0 p-6">
+        <!-- Logo -->
+        <div class="flex items-center gap-3 mb-10 px-2">
+            <div class="bg-primary/20 p-2 rounded-xl">
+                <span class="material-symbols-outlined text-primary text-3xl">school</span>
+            </div>
+            <h1 class="text-white text-xl font-bold tracking-tight">QuizMaster</h1>
+        </div>
+        <!-- Navigation -->
+        <nav class="flex flex-col gap-2 flex-1">
+            <a class="flex items-center gap-4 px-4 py-3 rounded-full bg-primary/10 text-primary font-bold transition-all"
+                href="#">
+                <span class="material-symbols-outlined fill-1">dashboard</span>
+                <span>Dashboard</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-full text-gray-400 hover:bg-[#2c4823]/50 hover:text-white transition-all font-medium"
+                href="#">
+                <span class="material-symbols-outlined">explore</span>
+                <span>Explore</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-full text-gray-400 hover:bg-[#2c4823]/50 hover:text-white transition-all font-medium"
+                href="#">
+                <span class="material-symbols-outlined">history</span>
+                <span>History</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-full text-gray-400 hover:bg-[#2c4823]/50 hover:text-white transition-all font-medium"
+                href="#">
+                <span class="material-symbols-outlined">emoji_events</span>
+                <span>Achievements</span>
+            </a>
+            <a class="flex items-center gap-4 px-4 py-3 rounded-full text-gray-400 hover:bg-[#2c4823]/50 hover:text-white transition-all font-medium"
+                href="#">
+                <span class="material-symbols-outlined">settings</span>
+                <span>Settings</span>
+            </a>
+        </nav>
+        <!-- CTA & User -->
+        <div class="flex flex-col gap-4 mt-auto">
+            <button
+                class="flex w-full cursor-pointer items-center justify-center rounded-full h-12 bg-primary text-[#152211] text-base font-bold shadow-[0_0_20px_rgba(70,236,19,0.3)] hover:shadow-[0_0_25px_rgba(70,236,19,0.5)] transition-all transform hover:scale-[1.02]">
+                <span class="material-symbols-outlined mr-2">add</span>
+                Start New Quiz
+            </button>
+            <div class="h-px bg-[#2c4823] my-2"></div>
+            <button class="flex items-center gap-3 px-2 text-gray-400 hover:text-white transition-colors">
+                <span class="material-symbols-outlined">logout</span>
+                <span class="text-sm font-medium">Log Out</span>
+            </button>
+        </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="flex-1 h-full overflow-y-auto relative scroll-smooth">
+        <!-- Top Bar / Mobile Header (Hidden on Desktop mostly) -->
+        <div
+            class="md:hidden flex items-center justify-between p-4 sticky top-0 bg-[#152211]/90 backdrop-blur-md z-20 border-b border-[#2c4823]">
+            <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">school</span>
+                <span class="font-bold text-lg">QuizMaster</span>
+            </div>
+            <button class="text-white">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+        <div class="max-w-7xl mx-auto p-6 md:p-10 lg:p-12 flex flex-col gap-10">
+            <!-- Welcome Header -->
+            <header class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div class="flex flex-col gap-2">
+                    <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight">Welcome back, Alex!</h2>
+                    <p class="text-[#9fc992] text-lg font-medium">Ready to challenge yourself today?</p>
+                </div>
+                <div class="flex items-center gap-4 bg-[#1c2e17] p-2 pr-6 rounded-full border border-[#2c4823]">
+                    <div class="w-10 h-10 rounded-full bg-cover bg-center border-2 border-primary"
+                        data-alt="User avatar portrait"
+                        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGPbVMX9NmAF45uGPGpOcm1vCsRmvlrWJrgh9On2nMGdbY9PKV0sZyKODuO_n_rCBjWwbvXS1FiwOu8Zp6HLBEXRcXs6GOysAUC0hsXhr-HgJyPxnKHD6iLaVd-yrnt0tRFpXmKCIxKd2pBnkTD6MygfFQDIEWEuWQm-cWLHejATXtlozp1QQIDmLyIQC6NK9m0tNGRsaFhE0x3twWJXnWQmPhYfc3JhtMRFSC3cGJp_1Pszht6m-OUMkZkoc6nP-kdmauYCCmYg')">
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-sm font-bold text-white leading-tight">Alex Johnson</span>
+                        <span class="text-xs text-primary font-semibold tracking-wide">LEVEL 12</span>
+                    </div>
+                    <div class="h-8 w-px bg-[#2c4823] mx-2"></div>
+                    <div class="flex items-center gap-1 text-[#ff9f43]">
+                        <span class="material-symbols-outlined text-xl fill-1">local_fire_department</span>
+                        <span class="font-bold">45</span>
+                    </div>
+                </div>
+            </header>
+            <!-- Stats & Progress Grid -->
+            <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Level Progress Card (Col Span 2) -->
+                <div
+                    class="lg:col-span-2 bg-[#1c2e17] rounded-xl p-6 md:p-8 flex flex-col justify-center gap-6 shadow-lg border border-[#2c4823]/50 relative overflow-hidden group">
+                    <div
+                        class="absolute top-0 right-0 p-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none">
+                    </div>
+                    <div class="flex justify-between items-end relative z-10">
+                        <div>
+                            <p class="text-[#9fc992] font-medium mb-1">Current Goal</p>
+                            <h3 class="text-2xl font-bold text-white">Mastering Data Structures</h3>
+                        </div>
+                        <span class="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-bold">In
+                            Progress</span>
+                    </div>
+                    <div class="flex flex-col gap-2 relative z-10">
+                        <div class="flex justify-between text-sm font-medium mb-1">
+                            <span class="text-white">Level Progress</span>
+                            <span class="text-primary">3,500 / 5,000 XP</span>
+                        </div>
+                        <div class="w-full bg-[#2c4823] rounded-full h-3">
+                            <div class="bg-primary h-3 rounded-full transition-all duration-500" style="width: 70%">
+                            </div>
+                        </div>
+                        <p class="text-[#9fc992] text-xs mt-1 text-right">You need 1,500 more XP to reach Level 13</p>
+                    </div>
+                </div>
+                <!-- Daily Accuracy (Col Span 1) -->
+                <div
+                    class="bg-[#1c2e17] rounded-xl p-6 md:p-8 flex flex-col items-center justify-center text-center shadow-lg border border-[#2c4823]/50 relative">
+                    <div class="absolute top-4 left-4">
+                        <span class="material-symbols-outlined text-[#9fc992]">trending_up</span>
+                    </div>
+                    <div class="relative size-32 mb-4">
+                        <svg class="size-full" viewbox="0 0 36 36">
+                            <path class="text-[#2c4823]"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                fill="none" stroke="currentColor" stroke-width="3"></path>
+                            <path class="text-primary"
+                                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                fill="none" stroke="currentColor" stroke-dasharray="98, 100" stroke-width="3"></path>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center flex-col">
+                            <span class="text-3xl font-bold text-white">98%</span>
+                        </div>
+                    </div>
+                    <p class="text-white font-bold text-lg">Accuracy Rate</p>
+                    <p class="text-[#9fc992] text-sm">Better than last week (+2%)</p>
+                </div>
+            </section>
+            <!-- Quick Stats Row -->
+            <section class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-[#2c4823] p-5 rounded-lg flex flex-col gap-1">
+                    <span class="material-symbols-outlined text-[#9fc992] mb-2">quiz</span>
+                    <span class="text-2xl font-bold text-white">1,240</span>
+                    <span class="text-xs text-gray-300">Questions Answered</span>
+                </div>
+                <div class="bg-[#2c4823] p-5 rounded-lg flex flex-col gap-1">
+                    <span class="material-symbols-outlined text-[#9fc992] mb-2">schedule</span>
+                    <span class="text-2xl font-bold text-white">32.5h</span>
+                    <span class="text-xs text-gray-300">Time Spent</span>
+                </div>
+                <div class="bg-[#2c4823] p-5 rounded-lg flex flex-col gap-1">
+                    <span class="material-symbols-outlined text-[#9fc992] mb-2">verified</span>
+                    <span class="text-2xl font-bold text-white">156</span>
+                    <span class="text-xs text-gray-300">Quizzes Completed</span>
+                </div>
+                <div class="bg-[#2c4823] p-5 rounded-lg flex flex-col gap-1">
+                    <span class="material-symbols-outlined text-[#9fc992] mb-2">leaderboard</span>
+                    <span class="text-2xl font-bold text-white">#42</span>
+                    <span class="text-xs text-gray-300">Global Rank</span>
+                </div>
+            </section>
+            <!-- Categories Grid -->
+            <section class="flex flex-col gap-6">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-2xl font-bold text-white">Popular Categories</h3>
+                    <a class="text-primary text-sm font-bold hover:underline" href="#">View All</a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div
+                        class="bg-[#1c2e17] rounded-xl p-6 border border-[#2c4823]/50 hover:border-primary/50 transition-all group cursor-pointer hover:-translate-y-1">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="size-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400">
+                                <span class="material-symbols-outlined text-2xl">science</span>
+                            </div>
+                            <span class="bg-[#2c4823] text-xs font-bold px-3 py-1 rounded-full text-white">HARD</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">General
+                            Science</h4>
+                        <p class="text-[#9fc992] text-sm mb-6">Physics, Chemistry, and Biology fundamentals.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <div class="size-8 rounded-full border-2 border-[#1c2e17] bg-gray-500 bg-cover"
+                                    data-alt="User avatar small"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_6SKEd5nGnmxPkGq-q6C8behnnYEhtS8TOYp2jpxhaL4N2Ia1UqMSzH_ks7lP1G3A8EE9tD2zyD3B1ejYQRWZzE6SBh_LxVOB64NES-vy-VPudx0LXqzLLtCaUxd94v80kJ7RJSx02bULEczkj6lPeZPhoL-g2jyrZPijG0_FWIzmunID2q2tnFo5ZE7VwtHX6rYe-lSdN8qGW9KsG30ynA0ikwusua8bmRxZfLIBOCzuvkBeETVheIl30jvEjyOVR7QlcOAx1Q')">
+                                </div>
+                                <div class="size-8 rounded-full border-2 border-[#1c2e17] bg-gray-600 bg-cover"
+                                    data-alt="User avatar small"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAYGRlCZ9HF20Vsl4D99PyhBMxo-YF8pf58tcdcuJOzYTbNwJh38Nw1q-RGRlSZ_M7C5CWWHve3TgF2IFBmdRsmJiWVy4i_Fu88BO6D6G5vXbneOczai4AeupS26ebZSN5SzUHCZnyFdrFgbfUszCfg6BHN6f9x3K7iNq_L6PdA4fRLis4ulG2JAIQnVZ4WYgV4rkKwzPJ84EmS9adsR4dhuwHyjT9vQ57ybm6tQ8Xa5rb_GvXe915Bf2bapXUcLZhaXbllM5yM4A')">
+                                </div>
+                                <div
+                                    class="size-8 rounded-full border-2 border-[#1c2e17] bg-[#2c4823] flex items-center justify-center text-[10px] font-bold text-white">
+                                    +24</div>
+                            </div>
+                            <button
+                                class="size-10 rounded-full bg-primary text-[#152211] flex items-center justify-center font-bold hover:bg-white transition-colors">
+                                <span class="material-symbols-outlined">play_arrow</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div
+                        class="bg-[#1c2e17] rounded-xl p-6 border border-[#2c4823]/50 hover:border-primary/50 transition-all group cursor-pointer hover:-translate-y-1">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="size-12 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400">
+                                <span class="material-symbols-outlined text-2xl">history_edu</span>
+                            </div>
+                            <span class="bg-[#2c4823] text-xs font-bold px-3 py-1 rounded-full text-white">MEDIUM</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">World
+                            History</h4>
+                        <p class="text-[#9fc992] text-sm mb-6">Explore ancient civilizations and modern events.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <div class="size-8 rounded-full border-2 border-[#1c2e17] bg-gray-500 bg-cover"
+                                    data-alt="User avatar small"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCWUIfkGu_EL64DrMhmjrTbUq62GBCtf7E0TJWVbnz7hgIRtm5hrB6MLmOuVgkinnCkou66RXxRdm2uwHgtJbmxMN5bQv7UX60bXg4AtMb8JIZ2C02zTJb1BG_oZGVWH0spJs29-pJWR3uoUQPcSDFodpZFpw2SSyTDC1aaciFHy3eupyg1wjEhPghkoGKQp_M1XYYO7zvs9gFydWCyqgfi14OMvdsfLtiJMsXNmZu1tYVb7iY3pWnGZge3sySokp7pJLRlqd5Jmw')">
+                                </div>
+                                <div
+                                    class="size-8 rounded-full border-2 border-[#1c2e17] bg-[#2c4823] flex items-center justify-center text-[10px] font-bold text-white">
+                                    +12</div>
+                            </div>
+                            <button
+                                class="size-10 rounded-full bg-primary text-[#152211] flex items-center justify-center font-bold hover:bg-white transition-colors">
+                                <span class="material-symbols-outlined">play_arrow</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div
+                        class="bg-[#1c2e17] rounded-xl p-6 border border-[#2c4823]/50 hover:border-primary/50 transition-all group cursor-pointer hover:-translate-y-1">
+                        <div class="flex justify-between items-start mb-6">
+                            <div
+                                class="size-12 rounded-full bg-orange-500/20 flex items-center justify-center text-orange-400">
+                                <span class="material-symbols-outlined text-2xl">terminal</span>
+                            </div>
+                            <span class="bg-[#2c4823] text-xs font-bold px-3 py-1 rounded-full text-white">EASY</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
+                            Programming 101</h4>
+                        <p class="text-[#9fc992] text-sm mb-6">Basic syntax, variables, and loops in Python.</p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex -space-x-2">
+                                <div class="size-8 rounded-full border-2 border-[#1c2e17] bg-gray-500 bg-cover"
+                                    data-alt="User avatar small"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCeGFFphyu8JSQaVb9XKRekJVIerIZZ17WR8-EqiHNO9KNXymCRmH7d-rlBwhWGFxAws828SWpFys7raubr2xAmGzWoaXgXIoqhzA-vaue0UGh2z8JS-z5hSaNnmrit00pgukbf3yDoBTBk6he6XYXsxysWIVKoTz4WYfLpj_Hm80Mdnc3pPYYz5f5bVPL8gM-bee3LlhDqvvBJJk7HiGo4MnpSqjVOm0jMGhwYQv3R0ZO91NQs97TQgZzwRp1Na0uihaaw4ErlOA')">
+                                </div>
+                                <div class="size-8 rounded-full border-2 border-[#1c2e17] bg-gray-600 bg-cover"
+                                    data-alt="User avatar small"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDnsNKz0VDbuhVLfqdwiDg-30aVKRLBBBOnL5n_tav3hEPcRJ_fIxp6xOIel-fYewwQ9MSSbQfM4TBRBmRXJaZ_qZvyGibCjd5T1M1nFIRdJ7mAbElg80EPnYmwCFx3oLnWb8pbQ-c9Y4gDgtJpHi6jZKYVdVn2cuh8OHdMGeOHSinKagG3M-aaUer6L-q_eEl_h-l62xI7iPTXQhSBiDPcLibRXA56dW4tlg7M62x19FK496AcjNnZqqZ3xKj-8ohRVZCZOMFoYg')">
+                                </div>
+                                <div
+                                    class="size-8 rounded-full border-2 border-[#1c2e17] bg-[#2c4823] flex items-center justify-center text-[10px] font-bold text-white">
+                                    +156</div>
+                            </div>
+                            <button
+                                class="size-10 rounded-full bg-primary text-[#152211] flex items-center justify-center font-bold hover:bg-white transition-colors">
+                                <span class="material-symbols-outlined">play_arrow</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Recent Activity -->
+            <section class="flex flex-col gap-4 pb-10">
+                <h3 class="text-2xl font-bold text-white">Recent Activity</h3>
+                <div class="bg-[#1c2e17] rounded-xl overflow-hidden border border-[#2c4823]/50">
+                    <div class="flex flex-col">
+                        <!-- Item 1 -->
+                        <div
+                            class="flex items-center justify-between p-4 md:p-6 border-b border-[#2c4823]/50 hover:bg-[#2c4823]/30 transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="size-12 rounded-lg bg-[#2c4823] flex items-center justify-center flex-shrink-0">
+                                    <span class="material-symbols-outlined text-white">functions</span>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-white">Mathematics Advanced</p>
+                                    <p class="text-sm text-[#9fc992]">Today, 10:23 AM</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6">
+                                <div class="hidden md:block text-right">
+                                    <p class="text-sm font-medium text-white">Score</p>
+                                    <p class="font-bold text-primary">18/20</p>
+                                </div>
+                                <button
+                                    class="px-4 py-2 rounded-full border border-[#2c4823] text-sm font-bold text-white hover:bg-[#2c4823] transition-colors">Review</button>
+                            </div>
+                        </div>
+                        <!-- Item 2 -->
+                        <div
+                            class="flex items-center justify-between p-4 md:p-6 border-b border-[#2c4823]/50 hover:bg-[#2c4823]/30 transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="size-12 rounded-lg bg-[#2c4823] flex items-center justify-center flex-shrink-0">
+                                    <span class="material-symbols-outlined text-white">public</span>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-white">Geography Basics</p>
+                                    <p class="text-sm text-[#9fc992]">Yesterday, 4:15 PM</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6">
+                                <div class="hidden md:block text-right">
+                                    <p class="text-sm font-medium text-white">Score</p>
+                                    <p class="font-bold text-primary">20/20</p>
+                                </div>
+                                <button
+                                    class="px-4 py-2 rounded-full border border-[#2c4823] text-sm font-bold text-white hover:bg-[#2c4823] transition-colors">Review</button>
+                            </div>
+                        </div>
+                        <!-- Item 3 -->
+                        <div
+                            class="flex items-center justify-between p-4 md:p-6 hover:bg-[#2c4823]/30 transition-colors">
+                            <div class="flex items-center gap-4">
+                                <div
+                                    class="size-12 rounded-lg bg-[#2c4823] flex items-center justify-center flex-shrink-0">
+                                    <span class="material-symbols-outlined text-white">palette</span>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-white">Art History</p>
+                                    <p class="text-sm text-[#9fc992]">Sep 12, 09:00 AM</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-6">
+                                <div class="hidden md:block text-right">
+                                    <p class="text-sm font-medium text-white">Score</p>
+                                    <p class="font-bold text-orange-400">14/20</p>
+                                </div>
+                                <button
+                                    class="px-4 py-2 rounded-full border border-[#2c4823] text-sm font-bold text-white hover:bg-[#2c4823] transition-colors">Review</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
+{%endblock body%}</html>

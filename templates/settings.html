@@ -1,0 +1,364 @@
+{% extends "base.html" %}
+{% block body %}
+
+<body
+    class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased overflow-hidden">
+    <div class="flex h-screen w-full">
+        <!-- Sidebar Navigation -->
+        <aside
+            class="hidden md:flex flex-col w-64 h-full border-r border-[#2c4823] bg-background-dark p-4 justify-between">
+            <div class="flex flex-col gap-6">
+                <!-- Brand -->
+                <div class="flex items-center gap-3 px-2">
+                    <div class="bg-primary/20 p-2 rounded-full">
+                        <span class="material-symbols-outlined text-primary text-2xl">school</span>
+                    </div>
+                    <h1 class="text-white text-lg font-bold tracking-tight">QuizMaster</h1>
+                </div>
+                <!-- Nav Items -->
+                <nav class="flex flex-col gap-2">
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-surface-card transition-colors group"
+                        href="#">
+                        <span class="material-symbols-outlined text-white/70 group-hover:text-primary">home</span>
+                        <span class="text-white/70 text-sm font-medium group-hover:text-white">Home</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-surface-card transition-colors group"
+                        href="#">
+                        <span class="material-symbols-outlined text-white/70 group-hover:text-primary">checklist</span>
+                        <span class="text-white/70 text-sm font-medium group-hover:text-white">Quizzes</span>
+                    </a>
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-full hover:bg-surface-card transition-colors group"
+                        href="#">
+                        <span
+                            class="material-symbols-outlined text-white/70 group-hover:text-primary">emoji_events</span>
+                        <span class="text-white/70 text-sm font-medium group-hover:text-white">Leaderboard</span>
+                    </a>
+                    <!-- Active State -->
+                    <a class="flex items-center gap-3 px-4 py-3 rounded-full bg-surface-card text-white" href="#">
+                        <span
+                            class="material-symbols-outlined text-primary font-variation-settings-fill">settings</span>
+                        <span class="text-white text-sm font-bold">Settings</span>
+                    </a>
+                </nav>
+            </div>
+            <!-- User Mini Profile (Mobile/Tablet replacement or bottom logout) -->
+            <div
+                class="flex items-center gap-3 px-4 py-3 mt-auto cursor-pointer hover:bg-surface-card rounded-full transition-colors">
+                <span class="material-symbols-outlined text-red-400">logout</span>
+                <span class="text-red-400 text-sm font-medium">Log Out</span>
+            </div>
+        </aside>
+        <!-- Main Content Area -->
+        <main class="flex-1 h-full overflow-y-auto scroll-smooth relative">
+            <div class="w-full max-w-[1280px] mx-auto p-4 md:p-8 lg:p-12 flex flex-col gap-8">
+                <!-- Breadcrumbs & Heading -->
+                <header class="flex flex-col gap-2">
+                    <div class="flex flex-wrap gap-2 items-center text-sm">
+                        <a class="text-[#9fc992] hover:text-primary transition-colors font-medium" href="#">Home</a>
+                        <span class="material-symbols-outlined text-[#9fc992] text-xs">chevron_right</span>
+                        <span class="text-white/60 font-medium">Profile</span>
+                    </div>
+                    <div class="flex flex-wrap justify-between items-center gap-4">
+                        <h1 class="text-white text-3xl md:text-4xl font-extrabold tracking-tight">Profile &amp; Settings
+                        </h1>
+                        <button class="md:hidden p-2 rounded-full bg-surface-card text-white">
+                            <span class="material-symbols-outlined">menu</span>
+                        </button>
+                    </div>
+                </header>
+                <!-- Dashboard Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <!-- LEFT COLUMN (Profile, Stats, Chart) -->
+                    <div class="lg:col-span-8 flex flex-col gap-6">
+                        <!-- Profile Card -->
+                        <div class="bg-surface-card rounded-xl p-6 md:p-8 shadow-lg relative overflow-hidden group">
+                            <!-- Background Decoration -->
+                            <div
+                                class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none">
+                            </div>
+                            <div class="flex flex-col md:flex-row gap-6 items-center md:items-start relative z-10">
+                                <div class="relative">
+                                    <div class="bg-center bg-no-repeat bg-cover rounded-full h-32 w-32 border-4 border-background-dark shadow-xl"
+                                        data-alt="Portrait of user Alex T smiling"
+                                        style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC1STExb4N1w8osyqnPM2qYZSMm3PQ4Ca3tzmDHwwOozB_h-Z8JwvZqhJqkdNWvCHizzkPNrQtx1AFoRf2m2sFvs4rBWrYM83v8ID7fhM-3xWRM07XOICPr3F1d-NK_t_933XphYvteRusOoxCmHuTMEeGpzd_lAs6GelMGQYk6XH1IHmsPhNee1UtlxKM8xcKQMrMfBIC-n0qO0Xb1JlyVByIqSRx538pqnA3cZ8olQMhy9Qj8empJYmOlQhJTbxXHiKyopzzYAA");'>
+                                    </div>
+                                    <div class="absolute bottom-0 right-0 bg-primary text-background-dark rounded-full p-1.5 border-4 border-surface-card"
+                                        title="Verified User">
+                                        <span class="material-symbols-outlined text-sm font-bold">check</span>
+                                    </div>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center md:items-start text-center md:text-left">
+                                    <h2 class="text-white text-2xl font-bold">Alex Thompson</h2>
+                                    <p class="text-[#9fc992] font-medium mb-4">Quiz Enthusiast | Level 42</p>
+                                    <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-white/10 text-xs text-white border border-white/5">Science
+                                            Geek</span>
+                                        <span
+                                            class="px-3 py-1 rounded-full bg-white/10 text-xs text-white border border-white/5">Early
+                                            Adopter</span>
+                                    </div>
+                                    <p class="text-white/60 text-sm mt-4 max-w-md leading-relaxed">
+                                        Passionate about learning new things every day. Currently focused on mastering
+                                        history and astrophysics.
+                                    </p>
+                                </div>
+                                <button
+                                    class="flex items-center gap-2 px-6 py-3 bg-primary hover:bg-green-400 text-background-dark rounded-full font-bold text-sm transition-all shadow-[0_0_20px_rgba(70,236,19,0.2)] hover:shadow-[0_0_30px_rgba(70,236,19,0.4)]">
+                                    <span class="material-symbols-outlined text-lg">edit</span>
+                                    Edit Profile
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Stats Row -->
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <div class="bg-surface-card rounded-xl p-6 flex flex-col gap-2 relative overflow-hidden">
+                                <span
+                                    class="material-symbols-outlined text-white/20 absolute right-4 top-4 text-4xl">list_alt</span>
+                                <p class="text-[#9fc992] text-sm font-medium uppercase tracking-wider">Total Quizzes</p>
+                                <p class="text-white text-3xl font-bold">142</p>
+                            </div>
+                            <div class="bg-surface-card rounded-xl p-6 flex flex-col gap-2 relative overflow-hidden">
+                                <span
+                                    class="material-symbols-outlined text-white/20 absolute right-4 top-4 text-4xl">analytics</span>
+                                <p class="text-[#9fc992] text-sm font-medium uppercase tracking-wider">Avg. Score</p>
+                                <p class="text-white text-3xl font-bold">85%</p>
+                            </div>
+                            <div class="bg-surface-card rounded-xl p-6 flex flex-col gap-2 relative overflow-hidden">
+                                <span
+                                    class="material-symbols-outlined text-primary/20 absolute right-4 top-4 text-4xl">local_fire_department</span>
+                                <p class="text-primary text-sm font-medium uppercase tracking-wider">Current Streak</p>
+                                <p class="text-white text-3xl font-bold">12 Days</p>
+                            </div>
+                        </div>
+                        <!-- Analytics Chart -->
+                        <div class="bg-surface-card rounded-xl p-6 md:p-8 flex flex-col gap-6">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h3 class="text-white text-xl font-bold">Weekly Performance</h3>
+                                    <p class="text-white/50 text-sm">Your scores over the last 7 days</p>
+                                </div>
+                                <select
+                                    class="bg-background-dark text-white text-sm rounded-lg px-3 py-2 border-none outline-none focus:ring-1 focus:ring-primary">
+                                    <option>Last 7 Days</option>
+                                    <option>Last 30 Days</option>
+                                </select>
+                            </div>
+                            <!-- Visual Chart Representation using CSS/SVG -->
+                            <div class="w-full h-48 md:h-64 relative mt-2">
+                                <!-- Grid Lines -->
+                                <div class="absolute inset-0 flex flex-col justify-between text-xs text-white/20">
+                                    <div class="border-b border-white/5 w-full h-0"></div>
+                                    <div class="border-b border-white/5 w-full h-0"></div>
+                                    <div class="border-b border-white/5 w-full h-0"></div>
+                                    <div class="border-b border-white/5 w-full h-0"></div>
+                                    <div class="border-b border-white/5 w-full h-0"></div>
+                                </div>
+                                <!-- Chart Line SVG -->
+                                <svg class="absolute inset-0 w-full h-full" preserveaspectratio="none"
+                                    viewbox="0 0 100 50">
+                                    <defs>
+                                        <lineargradient id="gradientFill" x1="0" x2="0" y1="0" y2="1">
+                                            <stop offset="0%" stop-color="#46ec13" stop-opacity="0.2"></stop>
+                                            <stop offset="100%" stop-color="#46ec13" stop-opacity="0"></stop>
+                                        </lineargradient>
+                                    </defs>
+                                    <!-- Area Fill -->
+                                    <path d="M0,40 Q10,35 20,38 T40,20 T60,25 T80,10 T100,15 V50 H0 Z"
+                                        fill="url(#gradientFill)"></path>
+                                    <!-- Line Stroke -->
+                                    <path d="M0,40 Q10,35 20,38 T40,20 T60,25 T80,10 T100,15" fill="none"
+                                        stroke="#46ec13" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="0.5"></path>
+                                    <!-- Data Points -->
+                                    <circle cx="0" cy="40" fill="#46ec13" r="1"></circle>
+                                    <circle cx="20" cy="38" fill="#46ec13" r="1"></circle>
+                                    <circle cx="40" cy="20" fill="#46ec13" r="1"></circle>
+                                    <circle cx="60" cy="25" fill="#46ec13" r="1"></circle>
+                                    <circle cx="80" cy="10" fill="#white" r="1" stroke="#46ec13" stroke-width="0.5">
+                                    </circle>
+                                    <circle cx="100" cy="15" fill="#46ec13" r="1"></circle>
+                                </svg>
+                                <!-- X Axis Labels -->
+                                <div
+                                    class="absolute -bottom-6 left-0 right-0 flex justify-between text-xs text-white/40 font-medium px-1">
+                                    <span>Mon</span>
+                                    <span>Tue</span>
+                                    <span>Wed</span>
+                                    <span>Thu</span>
+                                    <span>Fri</span>
+                                    <span>Sat</span>
+                                    <span>Sun</span>
+                                </div>
+                            </div>
+                            <!-- Spacer for labels -->
+                            <div class="h-4"></div>
+                        </div>
+                    </div>
+                    <!-- RIGHT COLUMN (Achievements & Settings) -->
+                    <div class="lg:col-span-4 flex flex-col gap-6">
+                        <!-- Achievements/Badges -->
+                        <div class="bg-surface-card rounded-xl p-6 flex flex-col gap-4">
+                            <div class="flex justify-between items-baseline">
+                                <h3 class="text-white text-lg font-bold">Badges</h3>
+                                <a class="text-primary text-xs font-bold hover:underline" href="#">View All</a>
+                            </div>
+                            <div class="grid grid-cols-3 gap-3">
+                                <!-- Unlocked Badge 1 -->
+                                <div
+                                    class="aspect-square rounded-2xl bg-white/5 flex flex-col items-center justify-center gap-2 p-2 hover:bg-white/10 transition-colors cursor-pointer group">
+                                    <div
+                                        class="bg-primary/20 p-2 rounded-full group-hover:scale-110 transition-transform">
+                                        <span class="material-symbols-outlined text-primary">bolt</span>
+                                    </div>
+                                    <span class="text-white/80 text-[10px] text-center font-semibold">Speed Demon</span>
+                                </div>
+                                <!-- Unlocked Badge 2 -->
+                                <div
+                                    class="aspect-square rounded-2xl bg-white/5 flex flex-col items-center justify-center gap-2 p-2 hover:bg-white/10 transition-colors cursor-pointer group">
+                                    <div
+                                        class="bg-blue-500/20 p-2 rounded-full group-hover:scale-110 transition-transform">
+                                        <span class="material-symbols-outlined text-blue-400">psychology</span>
+                                    </div>
+                                    <span class="text-white/80 text-[10px] text-center font-semibold">Brainiac</span>
+                                </div>
+                                <!-- Unlocked Badge 3 -->
+                                <div
+                                    class="aspect-square rounded-2xl bg-white/5 flex flex-col items-center justify-center gap-2 p-2 hover:bg-white/10 transition-colors cursor-pointer group">
+                                    <div
+                                        class="bg-purple-500/20 p-2 rounded-full group-hover:scale-110 transition-transform">
+                                        <span class="material-symbols-outlined text-purple-400">verified</span>
+                                    </div>
+                                    <span class="text-white/80 text-[10px] text-center font-semibold">Perfect 10</span>
+                                </div>
+                                <!-- Locked Badge 1 -->
+                                <div
+                                    class="aspect-square rounded-2xl bg-black/20 flex flex-col items-center justify-center gap-2 p-2 opacity-60">
+                                    <div class="bg-white/5 p-2 rounded-full">
+                                        <span class="material-symbols-outlined text-white/30">lock</span>
+                                    </div>
+                                    <span class="text-white/40 text-[10px] text-center font-medium">Quiz Master</span>
+                                </div>
+                                <!-- Locked Badge 2 -->
+                                <div
+                                    class="aspect-square rounded-2xl bg-black/20 flex flex-col items-center justify-center gap-2 p-2 opacity-60">
+                                    <div class="bg-white/5 p-2 rounded-full">
+                                        <span class="material-symbols-outlined text-white/30">lock</span>
+                                    </div>
+                                    <span class="text-white/40 text-[10px] text-center font-medium">Streak 30</span>
+                                </div>
+                                <!-- Locked Badge 3 -->
+                                <div
+                                    class="aspect-square rounded-2xl bg-black/20 flex flex-col items-center justify-center gap-2 p-2 opacity-60">
+                                    <div class="bg-white/5 p-2 rounded-full">
+                                        <span class="material-symbols-outlined text-white/30">lock</span>
+                                    </div>
+                                    <span class="text-white/40 text-[10px] text-center font-medium">Legend</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Settings Preferences -->
+                        <div class="bg-surface-card rounded-xl p-6 flex flex-col gap-6">
+                            <h3 class="text-white text-lg font-bold">Preferences</h3>
+                            <!-- Setting Item: Dark Mode -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-white/5 p-2 rounded-lg">
+                                        <span class="material-symbols-outlined text-white text-xl">dark_mode</span>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-white text-sm font-semibold">Dark Mode</span>
+                                        <span class="text-white/50 text-xs">Adjust appearance</span>
+                                    </div>
+                                </div>
+                                <!-- Toggle -->
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input checked="" class="sr-only peer" disabled="" type="checkbox" value="" />
+                                    <div
+                                        class="relative w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                                    </div>
+                                </label>
+                            </div>
+                            <!-- Setting Item: Notifications -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-white/5 p-2 rounded-lg">
+                                        <span class="material-symbols-outlined text-white text-xl">notifications</span>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-white text-sm font-semibold">Notifications</span>
+                                        <span class="text-white/50 text-xs">Email updates</span>
+                                    </div>
+                                </div>
+                                <!-- Toggle -->
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input checked="" class="sr-only peer" type="checkbox" value="" />
+                                    <div
+                                        class="relative w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                                    </div>
+                                </label>
+                            </div>
+                            <!-- Setting Item: Sound -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-white/5 p-2 rounded-lg">
+                                        <span class="material-symbols-outlined text-white text-xl">volume_up</span>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-white text-sm font-semibold">Sound Effects</span>
+                                        <span class="text-white/50 text-xs">In-quiz audio</span>
+                                    </div>
+                                </div>
+                                <!-- Toggle -->
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input class="sr-only peer" type="checkbox" value="" />
+                                    <div
+                                        class="relative w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                                    </div>
+                                </label>
+                            </div>
+                            <!-- Setting Item: Public Profile -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="bg-white/5 p-2 rounded-lg">
+                                        <span class="material-symbols-outlined text-white text-xl">public</span>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-white text-sm font-semibold">Public Profile</span>
+                                        <span class="text-white/50 text-xs">Visible to everyone</span>
+                                    </div>
+                                </div>
+                                <!-- Toggle -->
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input checked="" class="sr-only peer" type="checkbox" value="" />
+                                    <div
+                                        class="relative w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary">
+                                    </div>
+                                </label>
+                            </div>
+                            <hr class="border-white/10 my-1" />
+                            <div class="flex flex-col gap-3">
+                                <button
+                                    class="w-full py-3 rounded-lg bg-white/5 hover:bg-white/10 text-white text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-lg">manage_accounts</span>
+                                    Account Settings
+                                </button>
+                                <button
+                                    class="w-full py-3 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 text-sm font-semibold transition-colors flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined text-lg">delete</span>
+                                    Delete Account
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <footer class="mt-8 text-center text-white/30 text-xs pb-8">
+                    © 2023 QuizMaster Platform. All rights reserved.
+                </footer>
+            </div>
+        </main>
+    </div>
+</body>
+
+{% endblock body %}

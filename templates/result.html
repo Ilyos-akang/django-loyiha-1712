@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Quiz Results - QuizMaster</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <!-- Theme Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#46ec13",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#142210",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display transition-colors duration-200">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+        <!-- Header -->
+        <header
+            class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-white/10 px-6 lg:px-10 py-4 bg-white dark:bg-background-dark z-10">
+            <div class="flex items-center gap-3">
+                <div class="flex items-center justify-center size-10 rounded-full bg-primary/20 text-primary">
+                    <span class="material-symbols-outlined text-2xl">school</span>
+                </div>
+                <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">QuizMaster</h2>
+            </div>
+            <div class="flex items-center gap-6">
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a class="text-sm font-medium leading-normal hover:text-primary transition-colors"
+                        href="#">Dashboard</a>
+                    <a class="text-sm font-medium leading-normal hover:text-primary transition-colors"
+                        href="#">Courses</a>
+                    <a class="text-sm font-medium leading-normal hover:text-primary transition-colors"
+                        href="#">Profile</a>
+                </div>
+                <!-- Profile Avatar -->
+                <div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-primary/50 cursor-pointer hover:border-primary transition-colors"
+                    data-alt="User profile picture showing a smiling person"
+                    style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDG83b9bYdv_XPPnaMGN2-ZhlXBfj37px2yNOloCKsYT5Ejb6N1-qRgqVzoxnm4OuupDrUc3wumvbrxNY9_x7yYjHSU0mm2oKcVDIuNmO-PCfQwvDOfnnLicNd3BygkUgLPYJoYrDUaOnjBtXdNk8L1Cnm6JHOpdyLBgDkNwIMLzxUksCW6mY_gWwO2PXznVVkvexRNneiWUMLZEet80eGYoRiHPt_Nuzc1vf2foHfIcHxEC4O7mOgNdTjqXMDC9RJ_WHbvTbzx0Q");'>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content -->
+        <div class="flex-1 px-4 lg:px-10 py-6 md:py-10 max-w-[1280px] mx-auto w-full">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center gap-2 mb-8 text-sm md:text-base">
+                <a class="text-gray-500 dark:text-gray-400 hover:text-primary transition-colors font-medium"
+                    href="#">Home</a>
+                <span class="material-symbols-outlined text-sm text-gray-500 dark:text-gray-600">chevron_right</span>
+                <a class="text-gray-500 dark:text-gray-400 hover:text-primary transition-colors font-medium"
+                    href="#">Biology 101</a>
+                <span class="material-symbols-outlined text-sm text-gray-500 dark:text-gray-600">chevron_right</span>
+                <span class="text-primary font-bold">Quiz Results</span>
+            </div>
+            <!-- Dashboard Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Primary Column (Score & Review) -->
+                <div class="lg:col-span-8 flex flex-col gap-6">
+                    <!-- Hero Score Card -->
+                    <div
+                        class="bg-white dark:bg-white/5 rounded-lg md:rounded-[2rem] p-6 md:p-10 shadow-sm border border-gray-100 dark:border-white/5 flex flex-col-reverse md:flex-row items-center justify-between gap-8 relative overflow-hidden group">
+                        <!-- Background decoration -->
+                        <div
+                            class="absolute -right-20 -top-20 size-64 bg-primary/5 rounded-full blur-3xl pointer-events-none">
+                        </div>
+                        <div class="flex flex-col items-center md:items-start text-center md:text-left z-10 max-w-lg">
+                            <h1 class="text-3xl md:text-5xl font-black mb-3 tracking-tight">Quiz Complete!</h1>
+                            <p class="text-gray-500 dark:text-gray-400 text-lg mb-8 leading-relaxed">
+                                Exceptional work! You've mastered this topic and scored better than <span
+                                    class="text-primary font-bold">90%</span> of users.
+                            </p>
+                            <div class="flex flex-wrap gap-4 w-full md:w-auto">
+                                <button
+                                    class="flex-1 md:flex-none h-14 px-8 rounded-full bg-primary text-background-dark font-bold text-base hover:brightness-110 active:scale-95 transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+                                    <span class="material-symbols-outlined">refresh</span>
+                                    Retry Quiz
+                                </button>
+                                <button
+                                    class="flex-1 md:flex-none h-14 px-8 rounded-full bg-transparent border-2 border-gray-200 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/5 text-slate-900 dark:text-white font-bold text-base transition-all flex items-center justify-center gap-2">
+                                    <span class="material-symbols-outlined">visibility</span>
+                                    Review Answers
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Circular Score Visualization -->
+                        <div class="relative size-48 md:size-56 shrink-0 z-10">
+                            <!-- Outer Ring Track -->
+                            <svg class="size-full -rotate-90" viewbox="0 0 36 36">
+                                <path class="text-gray-100 dark:text-white/10"
+                                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    fill="none" stroke="currentColor" stroke-width="3.5"></path>
+                                <!-- Progress Ring (85%) -->
+                                <path class="text-primary drop-shadow-[0_0_10px_rgba(70,236,19,0.3)]"
+                                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                                    fill="none" stroke="currentColor" stroke-dasharray="85, 100" stroke-linecap="round"
+                                    stroke-width="3.5"></path>
+                            </svg>
+                            <!-- Center Text -->
+                            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                <span class="text-5xl md:text-6xl font-black tracking-tighter">85<span
+                                        class="text-2xl md:text-3xl">%</span></span>
+                                <span
+                                    class="text-xs font-bold text-gray-400 uppercase tracking-widest mt-1">Score</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Question Review Section -->
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center justify-between px-2">
+                            <h3 class="text-xl font-bold">Question Summary</h3>
+                            <button class="text-sm text-primary font-bold hover:underline">View All</button>
+                        </div>
+                        <div
+                            class="bg-white dark:bg-white/5 rounded-lg md:rounded-[2rem] border border-gray-100 dark:border-white/5 overflow-hidden">
+                            <!-- Question Item: Correct -->
+                            <div
+                                class="p-4 md:p-6 border-b border-gray-100 dark:border-white/5 flex gap-4 items-start hover:bg-gray-50 dark:hover:bg-white/5 transition-colors cursor-pointer group">
+                                <div
+                                    class="mt-1 size-8 shrink-0 rounded-full bg-primary/20 text-primary flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-lg">check</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-bold text-gray-400 mb-1">Question 1</p>
+                                    <p class="font-medium text-base md:text-lg mb-2">What is the primary function of the
+                                        mitochondria in a cell?</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
+                                        Your Answer: <span class="text-primary font-bold">Energy Production</span>
+                                    </p>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-gray-300 group-hover:text-white transition-colors">chevron_right</span>
+                            </div>
+                            <!-- Question Item: Incorrect -->
+                            <div
+                                class="p-4 md:p-6 border-b border-gray-100 dark:border-white/5 flex gap-4 items-start hover:bg-gray-50 dark:hover:bg-white/5 transition-colors cursor-pointer group">
+                                <div
+                                    class="mt-1 size-8 shrink-0 rounded-full bg-red-500/20 text-red-500 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-lg">close</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-bold text-gray-400 mb-1">Question 2</p>
+                                    <p class="font-medium text-base md:text-lg mb-2">Which molecule carries genetic
+                                        instructions?</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
+                                        Your Answer: <span class="text-red-400 font-bold line-through">Protein</span>
+                                        <span class="text-gray-600 dark:text-gray-500">•</span>
+                                        <span class="text-primary font-bold">DNA</span>
+                                    </p>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-gray-300 group-hover:text-white transition-colors">chevron_right</span>
+                            </div>
+                            <!-- Question Item: Skipped -->
+                            <div
+                                class="p-4 md:p-6 flex gap-4 items-start hover:bg-gray-50 dark:hover:bg-white/5 transition-colors cursor-pointer group">
+                                <div
+                                    class="mt-1 size-8 shrink-0 rounded-full bg-gray-500/20 text-gray-400 flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-lg">remove</span>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="text-sm font-bold text-gray-400 mb-1">Question 3</p>
+                                    <p class="font-medium text-base md:text-lg mb-2">Which process involves cell
+                                        division?</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
+                                        Your Answer: <span class="text-gray-400 italic">Skipped</span>
+                                    </p>
+                                </div>
+                                <span
+                                    class="material-symbols-outlined text-gray-300 group-hover:text-white transition-colors">chevron_right</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Secondary Column (Stats Breakdown) -->
+                <aside class="lg:col-span-4 flex flex-col gap-6">
+                    <!-- Accuracy Card -->
+                    <div
+                        class="bg-white dark:bg-white/5 rounded-lg md:rounded-[2rem] p-6 border border-gray-100 dark:border-white/5 h-fit">
+                        <div class="flex items-center gap-2 mb-6 text-gray-500 dark:text-gray-400">
+                            <span class="material-symbols-outlined">analytics</span>
+                            <span class="text-sm font-bold uppercase tracking-wider">Analysis</span>
+                        </div>
+                        <div class="flex flex-col gap-1 mb-8">
+                            <span class="text-4xl font-black">17<span
+                                    class="text-2xl text-gray-400 font-bold">/20</span></span>
+                            <span class="text-sm text-gray-500 dark:text-gray-400 font-medium">Questions Answered
+                                Correctly</span>
+                        </div>
+                        <!-- Bars -->
+                        <div class="flex flex-col gap-5">
+                            <!-- Correct -->
+                            <div class="group">
+                                <div class="flex justify-between text-sm font-bold mb-2">
+                                    <span class="text-primary group-hover:brightness-110 transition">Correct</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="h-4 w-full bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+                                    <div
+                                        class="h-full bg-primary rounded-full w-[85%] shadow-[0_0_10px_rgba(70,236,19,0.3)]">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Incorrect -->
+                            <div class="group">
+                                <div class="flex justify-between text-sm font-bold mb-2">
+                                    <span class="text-red-400 group-hover:text-red-300 transition">Incorrect</span>
+                                    <span>10%</span>
+                                </div>
+                                <div class="h-4 w-full bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full bg-red-500/80 rounded-full w-[10%]"></div>
+                                </div>
+                            </div>
+                            <!-- Skipped -->
+                            <div class="group">
+                                <div class="flex justify-between text-sm font-bold mb-2">
+                                    <span class="text-gray-400 group-hover:text-gray-300 transition">Skipped</span>
+                                    <span>5%</span>
+                                </div>
+                                <div class="h-4 w-full bg-gray-100 dark:bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full bg-gray-500 rounded-full w-[5%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mini Stats Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Time Card -->
+                        <div
+                            class="bg-white dark:bg-white/5 rounded-lg md:rounded-[2rem] p-5 border border-gray-100 dark:border-white/5 flex flex-col items-center justify-center text-center gap-3 aspect-square hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+                            <div
+                                class="size-12 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center mb-1">
+                                <span class="material-symbols-outlined text-2xl">timer</span>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-black">12:30</div>
+                                <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mt-1">Time Taken
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Streak Card -->
+                        <div
+                            class="bg-white dark:bg-white/5 rounded-lg md:rounded-[2rem] p-5 border border-gray-100 dark:border-white/5 flex flex-col items-center justify-center text-center gap-3 aspect-square hover:bg-gray-50 dark:hover:bg-white/10 transition-colors">
+                            <div
+                                class="size-12 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center mb-1">
+                                <span class="material-symbols-outlined text-2xl">local_fire_department</span>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-black">8</div>
+                                <div class="text-xs font-bold text-gray-400 uppercase tracking-wider mt-1">Best Streak
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Promo Card -->
+                    <div
+                        class="bg-gradient-to-br from-primary/20 to-transparent rounded-lg md:rounded-[2rem] p-6 border border-primary/20 relative overflow-hidden">
+                        <div class="relative z-10">
+                            <span
+                                class="inline-block px-3 py-1 rounded-full bg-primary text-background-dark text-xs font-bold mb-3">New
+                                Badge Unlocked</span>
+                            <h4 class="text-lg font-bold mb-1">Biology Master</h4>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-4">You've completed the Cell Structure
+                                module.</p>
+                            <button
+                                class="text-sm font-bold text-primary hover:text-white transition-colors flex items-center gap-1">
+                                View Profile <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </button>
+                        </div>
+                        <span
+                            class="material-symbols-outlined absolute -bottom-4 -right-4 text-8xl text-primary/10 rotate-12">military_tech</span>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
